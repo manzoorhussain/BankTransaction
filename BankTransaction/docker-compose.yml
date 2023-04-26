@@ -1,0 +1,37 @@
+version: '3.1'
+services:
+  app:
+    container_name: banktransaction_container
+    image: 'banktransaction'
+    build: ./
+    ports:
+      - "8089:8089"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+
+  db:
+    container_name: post_gres_db_container
+    image : postgres
+
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+  
+
+
+
+
+
+
+
+
+
+

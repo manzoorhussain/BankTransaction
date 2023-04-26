@@ -1,0 +1,22 @@
+flyway:
+  enabled: true
+  locations: classpath:migration
+  schemas: [jbt_db]
+
+spring:
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    password: admin
+  jpa:
+    datasource:
+      driver-class-name: org.postgresql.Driver
+    properties:
+      hibernate:
+        format_sql: 'true'
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+server:
+  port: '8089'
